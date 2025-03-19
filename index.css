@@ -1,0 +1,2365 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #fcfffd;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Beautiful Background Pattern with Teal Accents */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right, rgba(0,168,168,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,168,168,0.03) 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 0.7;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    padding: 20px;
+    opacity: 1;
+}
+
+.header.scrolled {
+    background-color: rgba(0, 102, 102, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.header-text {
+    color: white;
+    font-size: 1.1rem;
+    text-align: left;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    letter-spacing: 2px;
+}
+
+/* Hero Section */
+.invitation-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('portada.jpg');
+    background-size: cover;
+    filter: brightness(0.75) contrast(1.1);
+    background-position: center 20%;
+    object-fit: cover;
+    transform: scale(1.1);
+    max-width: 90%;
+    margin: 0 auto;
+    left: 5%;
+    transition: all 0.8s ease-out;
+}
+
+.content {
+    position: absolute;
+    top: 0 !important; /* Positioned at the very top */
+    left: 50% !important; /* Centered horizontally */
+    transform: translateX(-50%) !important; /* Center horizontally while keeping vertical position */
+    text-align: center; /* Center text */
+    color: white;
+    width: 90%;
+    padding: 20px;
+    padding-top: 30px; /* Added padding at the top */
+    z-index: 10;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 7rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,168,168,0.4);
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.subtitle {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,168,168,0.4);
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.date-container {
+    position: absolute;
+    bottom: 5%; /* Position near the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.date {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem; /* Increased font size */
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,168,168,0.4);
+    font-weight: 400;
+    animation: fadeIn 2s ease-out;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    display: inline-block;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .title {
+        font-size: 5.5rem;
+    }
+    .subtitle {
+        font-size: 4rem;
+    }
+    .date {
+        font-size: 4rem; /* Larger date font on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 4.5rem;
+    }
+    .subtitle {
+        font-size: 3.5rem;
+    }
+    .date {
+        font-size: 3.5rem; /* Still larger date font on mobile */
+        border-top-width: 2px; /* More visible border on small screens */
+    }
+}
+
+/* Quote Section */
+.quote-section {
+    background-color: #ffffff;
+    padding: 90px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-style: italic;
+    color: #333;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    position: relative;
+    padding: 0 40px;
+    font-family: 'Playfair Display', serif;
+}
+
+.quote-content::before,
+.quote-content::after {
+    content: '"';
+    position: absolute;
+    font-size: 5rem;
+    color: #009494;
+    opacity: 0.4;
+    font-family: 'Playfair Display', serif;
+}
+
+.quote-content::before {
+    top: -30px;
+    left: 0;
+}
+
+.quote-content::after {
+    bottom: -50px;
+    right: 0;
+}
+
+/* Common Section Styles */
+.combined-section,
+.profile-family-section,
+.location-section,
+.dress-code-section,
+.gift-section,
+.rsvp-section {
+    position: relative;
+    padding: 90px 20px;
+    overflow: hidden;
+    background-color: #f0fafa;
+}
+
+.combined-section {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.combined-section:nth-child(odd),
+.profile-family-section:nth-child(odd),
+.location-section:nth-child(odd),
+.dress-code-section:nth-child(odd),
+.gift-section:nth-child(odd),
+.rsvp-section:nth-child(odd) {
+    background-color: #f0fafa;
+}
+
+.combined-section:nth-child(even),
+.profile-family-section:nth-child(even),
+.location-section:nth-child(even),
+.dress-code-section:nth-child(even),
+.gift-section:nth-child(even),
+.rsvp-section:nth-child(even) {
+    background-color: #ecf9f9;
+}
+
+.combined-section::before,
+.profile-family-section::before,
+.location-section::before,
+.dress-code-section::before,
+.gift-section::before,
+.rsvp-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/api/placeholder/1200/800');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    filter: blur(5px) brightness(1.1);
+    z-index: 0;
+}
+
+/* Section titles */
+.section-title,
+.location-title,
+.dress-code-title,
+.gift-title,
+.rsvp-title,
+.family-title,
+.profile-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    color: #00a8a8;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Content containers */
+.combined-content,
+.family-content,
+.ceremony-content, 
+.reception-content,
+.dress-code-content,
+.gift-content,
+.rsvp-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    padding: 50px 40px;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    z-index: 1;
+    transform: translateY(0);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    margin: 0 auto;
+}
+
+.combined-content:hover,
+.family-content:hover,
+.ceremony-content:hover, 
+.reception-content:hover,
+.dress-code-content:hover,
+.gift-content:hover,
+.rsvp-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.combined-content::before,
+.family-content::before,
+.ceremony-content::before, 
+.reception-content::before,
+.dress-code-content::before,
+.gift-content::before,
+.rsvp-content::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 2px solid rgba(0, 168, 168, 0.25);
+    border-radius: 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Music Player Styles */
+.music-instructions {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    margin-bottom: 35px;
+    line-height: 1.6;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.custom-audio-player {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.play-pause-btn {
+    background: none;
+    border: none;
+    font-size: 3rem;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
+}
+
+.timeline {
+    flex-grow: 1;
+    height: 10px;
+    background-color: rgba(221, 221, 221, 0.8);
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.timeline:hover {
+    height: 14px;
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to right, #00a8a8, #00caca);
+    width: 0;
+    border-radius: 5px;
+}
+
+.separator {
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 168, 168, 0.8), transparent);
+    margin: 30px auto 40px;
+}
+
+/* Countdown Styles */
+.countdown-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 25px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.countdown-item {
+    text-align: center;
+    width: calc(25% - 25px);
+    min-width: 110px;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.countdown-item:nth-child(1) { animation-delay: 0.1s; }
+.countdown-item:nth-child(2) { animation-delay: 0.25s; }
+.countdown-item:nth-child(3) { animation-delay: 0.4s; }
+.countdown-item:nth-child(4) { animation-delay: 0.55s; }
+
+.countdown-number {
+    font-size: 4rem;
+    background: linear-gradient(45deg, #006969, #00a8a8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    text-shadow: 0px 0px 2px rgba(0, 168, 168, 0.1);
+}
+
+.countdown-label {
+    font-size: 1rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Profile & Family Section */
+.profile-family-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.profile-content {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.profile-image-container {
+    width: 820px;
+    height: 1000px;
+    margin: 0 auto 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid rgba(0, 168, 168, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.profile-image-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.profile-image-container:hover .profile-image {
+    transform: scale(1.05);
+}
+
+.family-names {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.family-separator {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #00a8a8;
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+.padrinos-section {
+    margin-top: 70px;
+}
+
+/* Location Section Styles */
+.location-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.ceremony-title, .reception-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #00a8a8;
+    margin-bottom: 20px;
+}
+
+.church-name, .venue-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.ceremony-time, .reception-time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.ceremony-content, .reception-content {
+    margin-bottom: 50px;
+}
+
+.map-button {
+    display: inline-block;
+    background-color: #008080;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-button:hover {
+    background-color: #006666;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ceremony-address, .reception-address {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.church-image-container {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto 50px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid rgba(0, 168, 168, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease;
+}
+
+.church-image-container:hover {
+    transform: scale(1.02);
+}
+
+.church-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.church-image:hover {
+    transform: scale(1.05);
+}
+
+/* Dress Code Section */
+.dress-code-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.dress-code-formal {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.dress-code-images {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.dress-code-image-container {
+    width: 100%; /* Cambié el 400px a 100% para que ocupe todo el ancho del contenedor */
+    height: 80vh; /* Ajusté la altura para que ocupe una proporción adecuada del contenedor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.dress-code-image {
+    width: 100%; /* Asegura que la imagen ocupe todo el espacio disponible */
+    height: 100%; /* Esto también garantiza que la imagen se estire o ajuste al contenedor */
+    object-fit: cover; /* Cambié a cover para que la imagen cubra todo el contenedor sin distorsionarse */
+}
+
+.dress-code-note {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Gift Section */
+.gift-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.gift-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gift-option {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.gift-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.gift-icon {
+    font-size: 3rem;
+    margin: 15px 0;
+    transition: transform 0.3s ease;
+}
+
+.gift-icon:hover {
+    transform: scale(1.2);
+}
+
+.gift-separator {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0;
+}
+
+.gift-store {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.gift-registry {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.gift-button {
+    display: inline-block;
+    background-color: #008080;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gift-button:hover {
+    background-color: #006666;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* RSVP Section */
+.rsvp-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.rsvp-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-style: italic;
+    color: #333;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.rsvp-button {
+    display: inline-block;
+    padding: 12px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.rsvp-yes {
+    background-color: #008080;
+}
+
+.rsvp-no {
+    background-color: #008080;
+}
+
+.rsvp-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rsvp-yes:hover {
+    background-color: #006666;
+}
+
+.rsvp-no:hover {
+    background-color: #006666;
+}
+
+/* Content section */
+.content-section {
+    min-height: 50vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { 
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 0.3;
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 5rem;
+    }
+
+    .subtitle {
+        font-size: 3.5rem;
+    }
+
+    .date {
+        font-size: 1.8rem;
+    }
+
+    .header-text {
+        font-size: 0.9rem;
+    }
+
+    .section-title, 
+    .family-title, 
+    .profile-name,
+    .location-title,
+    .dress-code-title,
+    .gift-title,
+    .rsvp-title {
+        font-size: 3.5rem;
+    }
+
+    .quote-content {
+        font-size: 1.3rem;
+        padding: 0 25px;
+    }
+
+    .countdown-item {
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+
+    .countdown-number {
+        font-size: 3.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.9rem;
+    }
+
+    .combined-content, 
+    .family-content,
+    .ceremony-content, 
+    .reception-content,
+    .dress-code-content,
+    .gift-content,
+    .rsvp-content {
+        padding: 40px 30px;
+    }
+
+    .family-names {
+        font-size: 1.9rem;
+    }
+
+    .profile-image-container {
+        width: 300px;
+        height: 540px;
+    }
+    
+    .ceremony-title, 
+    .reception-title {
+        font-size: 3rem;
+    }
+    
+    .church-name, 
+    .venue-name {
+        font-size: 1.8rem;
+    }
+    
+    .ceremony-time, 
+    .reception-time {
+        font-size: 1.3rem;
+    }
+    
+    .ceremony-content, 
+    .reception-content {
+        padding: 30px;
+    }
+    
+    .church-image-container {
+        height: 300px;
+    }
+    
+    .dress-code-formal {
+        font-size: 2rem;
+    }
+    
+    .dress-code-images {
+        gap: 30px;
+    }
+    
+    .dress-code-image-container {
+        width: 150px;
+        height: 300px;
+    }
+    
+    .dress-code-note {
+        font-size: 1.5rem;
+    }
+    
+    .gift-message {
+        font-size: 1.4rem;
+    }
+    
+    .gift-option {
+        font-size: 1.6rem;
+    }
+    
+    .gift-store {
+        font-size: 2.2rem;
+    }
+    
+    .gift-registry {
+        font-size: 1.8rem;
+    }
+    
+    .contact-name {
+        font-size: 1.8rem;
+    }
+    
+    .rsvp-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 4rem;
+    }
+
+    .subtitle {
+        font-size: 3rem;
+    }
+
+    .date {
+        font-size: 1.5rem;
+    }
+
+    .section-title, 
+    .family-title, 
+    .profile-name,
+    .location-title,
+    .dress-code-title,
+    .gift-title,
+    .rsvp-title {
+        font-size: 2.8rem;
+    }
+    
+    .quote-content {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+    
+    .countdown-container {
+        gap: 15px;
+    }
+    
+    .countdown-item {
+        width: calc(50% - 15px);
+    }
+
+    .countdown-number {
+        font-size: 3rem;
+    }
+
+    .countdown-label {
+        font-size: 0.8rem;
+    }
+
+    .family-names {
+        font-size: 1.9rem;
+    }
+
+    .profile-image-container {
+        width: 300px;
+        height: 540px;
+    }
+    
+    .ceremony-title, 
+    .reception-title {
+        font-size:.5rem;
+    }
+    
+    .church-name, 
+    .venue-name {
+        font-size: 1.6rem;
+    }
+    
+    .ceremony-content, 
+    .reception-content,
+    .dress-code-content,
+    .gift-content,
+    .rsvp-content {
+        padding: 25px 20px;
+    }
+    
+    .church-image-container {
+        height: 250px;
+    }
+    
+    .dress-code-formal {
+        font-size: 1.8rem;
+    }
+    
+    .dress-code-images {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .dress-code-image-container {
+        width: 180px;
+        height: 280px;
+    }
+    
+    .dress-code-note {
+        font-size: 1.3rem;
+    }
+    
+    .gift-content {
+        padding: 40px 25px;
+    }
+    
+    .gift-message {
+        font-size: 1.2rem;
+    }
+    
+    .gift-option {
+        font-size: 1.4rem;
+    }
+    
+    .gift-icon {
+        font-size: 2.5rem;
+    }
+    
+    .gift-separator {
+        font-size: 1.8rem;
+    }
+    
+    .gift-store {
+        font-size: 2rem;
+    }
+    
+    .gift-registry {
+        font-size: 1.6rem;
+    }
+    
+    .gift-button,
+    .map-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+    
+    .rsvp-title {
+        font-size: 3rem;
+    }
+    
+    .rsvp-title {
+        font-size: 3rem;
+    }
+    
+    .rsvp-content {
+        padding: 40px 25px;
+    }
+    
+    .contact-name {
+        font-size: 1.6rem;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .rsvp-button {
+        padding: 10px 30px;
+        font-size: 1rem;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .title {
+        font-size: 3.5rem;
+    }
+    
+    .subtitle {
+        font-size: 2.5rem;
+    }
+    
+    .date {
+        font-size: 1.2rem;
+    }
+    
+    .countdown-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .countdown-item {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 15px;
+    }
+    
+    .countdown-number {
+        font-size: 3.5rem;
+    }
+
+    .family-names {
+        font-size: 1.7rem;
+    }
+
+    .profile-image-container {
+        width: 300px;
+        height: 540px;
+    }
+    
+    .section-title, 
+    .family-title, 
+    .profile-name,
+    .location-title,
+    .dress-code-title,
+    .gift-title,
+    .rsvp-title {
+        font-size: 2.5rem;
+    }
+    
+    .ceremony-title, 
+    .reception-title {
+        font-size: 2.2rem;
+    }
+    
+    .church-name, 
+    .venue-name {
+        font-size: 1.5rem;
+    }
+    
+    .map-button,
+    .gift-button,
+    .rsvp-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Additional Enhancements */
+
+/* Subtle scroll indicator arrow on the hero section */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+    z-index: 10;
+}
+
+.scroll-indicator::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+/* Sparkling effect for titles */
+.title, .subtitle, .profile-name {
+    position: relative;
+    overflow: hidden;
+}
+
+.title::after, .subtitle::after, .profile-name::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.13) 77%,
+        rgba(255, 255, 255, 0.5) 92%,
+        rgba(255, 255, 255, 0.0) 100%
+    );
+    animation: sparkle 6s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        top: -50%;
+        left: -50%;
+    }
+    50% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+    }
+}
+
+/* Subtle page section dividers */
+.combined-section::after,
+.profile-family-section::after,
+.location-section::after,
+.dress-code-section::after,
+.gift-section::after {
+    content: "✦";
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    color: rgba(0, 168, 168, 0.4);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+/* Fancy button styles */
+.map-button, 
+.gift-button, 
+.rsvp-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.map-button::before, 
+.gift-button::before, 
+.rsvp-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: all 0.75s;
+}
+
+.map-button:hover::before, 
+.gift-button:hover::before, 
+.rsvp-button:hover::before {
+    left: 100%;
+}
+
+/* Soft page transitions for smooth scrolling */
+html {
+    scroll-padding-top: 80px; /* For fixed header */
+    scroll-behavior: smooth;
+}
+
+body {
+    transition: background-color 0.5s ease;
+}
+
+/* Add beautiful decorations at corners of content boxes */
+.combined-content::after,
+.family-content::after,
+.ceremony-content::after, 
+.reception-content::after,
+.dress-code-content::after,
+.gift-content::after,
+.rsvp-content::after {
+    content: "❧";
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    font-size: 2rem;
+    color: rgba(0, 168, 168, 0.6);
+    transform: rotate(15deg);
+}
+
+.combined-content::before,
+.family-content::before,
+.ceremony-content::before, 
+.reception-content::before,
+.dress-code-content::before,
+.gift-content::before,
+.rsvp-content::before {
+    content: "❧";
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    font-size: 2rem;
+    color: rgba(0, 168, 168, 0.6);
+    transform: rotate(-15deg);
+    z-index: 2;
+}
+
+/* Improved focus states for accessibility */
+a:focus, button:focus {
+    outline: 2px dashed rgba(0, 168, 168, 0.5);
+    outline-offset: 3px;
+}
+
+/* Add a subtle texture to the page background */
+body {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(0,168,168,0.05)' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Glitter effect for special sections inspired by the quinceañera dress */
+.title::before,
+.subtitle::before,
+.section-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 3%),
+        radial-gradient(circle at 40% 70%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 4%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 5%),
+        radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 4%),
+        radial-gradient(circle at 80% 10%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 3%),
+        radial-gradient(circle at 10% 90%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 5%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 4%),
+        radial-gradient(circle at 60% 40%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 6%),
+        radial-gradient(circle at 70% 60%, rgba(0, 255, 255, 0.18) 0%, rgba(0, 255, 255, 0) 5%);
+    pointer-events: none;
+    animation: sparkleGlow 8s linear infinite;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+@keyframes sparkleGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.9; }
+}
+
+/* Color scheme adjustment to match the turquoise dress */
+:root {
+    --primary-color: #00a8a8;     /* Main turquoise */
+    --primary-dark: #006666;      /* Darker turquoise */
+    --primary-light: #00caca;     /* Lighter turquoise */
+    --accent-color: #004d4d;      /* Deep turquoise accent */
+    --bg-light: #f0fafa;          /* Light background with slight turquoise tint */
+    --bg-lighter: #ecf9f9;        /* Lighter background variation */
+}
+
+/* Add some subtle shimmering effects to buttons to match the sparkle of the dress */
+.map-button, 
+.gift-button, 
+.rsvp-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.map-button::after, 
+.gift-button::after, 
+.rsvp-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, rgba(0,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(0,255,255,0.1) 50%, rgba(0,255,255,0.1) 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+    opacity: 0.2;
+    z-index: -1;
+    border-radius: 5px;
+    animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+/* Special hover state for sections to add interactive glimmer */
+.combined-content:hover,
+.family-content:hover,
+.ceremony-content:hover, 
+.reception-content:hover,
+.dress-code-content:hover,
+.gift-content:hover,
+.rsvp-content:hover {
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(0, 168, 168, 0.2);
+}
+/* Footer Section Styles */
+.footer-section {
+    padding: 30px 20px;
+    background-color: rgba(0, 102, 102, 0.9);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-attribution {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.footer-copyright {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+/* Responsive styles for footer section */
+@media screen and (max-width: 480px) {
+    .footer-section {
+        padding: 25px 15px;
+    }
+    
+    .footer-attribution {
+        font-size: 0.9rem;
+    }
+    
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+}
+/* Updated Header Styles */
+.header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9); /* Negro con 90% de opacidad */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+body .header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Añade estas definiciones de animaciones CSS a tu archivo index.css */
+
+/* Animaciones básicas */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from { 
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from { 
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% { 
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% { 
+        transform: scale(0.9);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes expandWidth {
+    from { width: 0; }
+    to { width: 70%; }
+}
+
+@keyframes zoomImage {
+    from { 
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes flipInX {
+    from {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+    60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+    80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    to {
+        transform: perspective(400px);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: center;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes sweepToRight {
+    from {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    to {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
+/* Aplicación de animaciones */
+.animate-fadeIn.animated {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+.animate-fadeInUp.animated {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.animate-fadeInDown.animated {
+    animation: fadeInDown 1.2s ease-out forwards;
+}
+
+.animate-scaleIn.animated {
+    animation: scaleIn 1.2s ease-out forwards;
+}
+
+.animate-expandWidth.animated {
+    animation: expandWidth 1.5s ease-out forwards;
+    width: 0; /* Asegúrate de que comienza en 0 */
+}
+
+.animate-zoomImage.animated {
+    animation: zoomImage 1.2s ease-out forwards;
+}
+
+.animate-bounceIn.animated {
+    animation: bounceIn 1s ease-out forwards;
+}
+
+.animate-slideInLeft.animated {
+    animation: slideInLeft 1.2s ease-out forwards;
+}
+
+.animate-slideInRight.animated {
+    animation: slideInRight 1.2s ease-out forwards;
+}
+
+.animate-flipInX.animated {
+    animation: fadeInDown 1.2s ease-out forwards;
+
+}
+
+.animate-rotateIn.animated {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.animate-shimmer.animated {
+    position: relative;
+    overflow: hidden;
+}
+
+.animate-shimmer.animated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+                              rgba(255,255,255,0) 0%,
+                              rgba(255,255,255,0.3) 50%,
+                              rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+.animate-sweepToRight.animated {
+    position: relative;
+    display: inline-block;
+    transform-origin: left;
+    overflow: hidden;
+}
+
+.animate-sweepToRight.animated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+    animation: sweepToRight 1s forwards;
+}
+
+/* Estilo adicional para cascade animation */
+.animate-cascade.animated > * {
+    opacity: 0;
+}
+
+.animate-cascade.animated > *:nth-child(1) {
+    animation: fadeInUp 0.6s ease-out 0.1s forwards;
+}
+
+.animate-cascade.animated > *:nth-child(2) {
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+}
+
+.animate-cascade.animated > *:nth-child(3) {
+    animation: fadeInUp 0.6s ease-out 0.3s forwards;
+}
+
+.animate-cascade.animated > *:nth-child(4) {
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+}
+
+/* Estado inicial de los elementos */
+[class*="animate-"] {
+    opacity: 0;
+}
+
+[class*="animate-"].animated {
+    opacity: 1;
+}
+/* ESTILOS PARA EL CARRUSEL */
+
+/* Profile Carousel Container */
+.profile-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px; /* Aumentado de 400px a 600px */
+    height: 700px; /* Aumentado para hacer el carrusel más alto */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+}
+
+/* Slides Container */
+.carousel-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Individual Slide */
+.carousel-slide {
+    flex: 0 0 100%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.8s ease; /* Transición más suave */
+    display: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    display: block;
+}
+
+/* Profile Images in Carousel */
+.carousel-slide .profile-image {
+    width: 100%;
+    height: 700px; /* Altura aumentada para imágenes más grandes */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    object-position: center;
+    display: block;
+    border-radius: 15px;
+}
+
+/* Navigation Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px; /* Más grandes */
+    height: 50px; /* Más grandes */
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px; /* Más grande */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1); /* Efecto hover mejorado */
+}
+
+.carousel-prev {
+    left: 15px;
+}
+
+.carousel-next {
+    right: 15px;
+}
+
+/* Dots/Indicators */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px; /* Más abajo */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Mayor espacio entre puntos */
+}
+
+.carousel-dot {
+    width: 15px; /* Más grande */
+    height: 15px; /* Más grande */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: white;
+    transform: scale(1.3); /* Mayor escala */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-carousel-container {
+        max-width: 100%;
+        height: 450px;
+    }
+    
+    .carousel-slide .profile-image {
+        height: 450px;
+    }
+    
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-carousel-container {
+        height: 350px;
+    }
+    
+    .carousel-slide .profile-image {
+        height: 350px;
+    }
+    
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .carousel-dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Animation for slide transition */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.carousel-slide.active {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Destacar el contenedor del carrusel para mayor elevación */
+.profile-content {
+    margin-bottom: 40px; /* Más espacio debajo */
+}
+
+/* Efecto de elevación adicional al pasar el mouse */
+.profile-carousel-container:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    transition: all 0.4s ease;
+}
+/* Estilos mejorados para el footer */
+.footer-section {
+    background-color: #333;
+    color: #fff;
+    padding: 25px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer-attribution {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer-contact {
+    font-size: 17px;
+    padding: 12px 0;
+    margin: 8px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+.footer-link {
+    color: #ff9cda; /* Color rosa acorde con el tema de quinceañera */
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Efecto hover para hacer más llamativo el footer */
+.footer-contact:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Versión responsiva */
+@media (max-width: 480px) {
+    .footer-contact {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+}
+.ticket-section {
+    position: relative;
+    padding: 90px 20px;
+    overflow: hidden;
+    background-color: #f0fafa;
+}
+
+.ticket-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/api/placeholder/1200/800');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    filter: blur(5px) brightness(1.1);
+    z-index: 0;
+}
+
+.ticket-section::after {
+    content: "✦";
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    color: rgba(0, 168, 168, 0.4);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.ticket-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.ticket-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    color: #00a8a8;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.ticket-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    padding: 50px 40px;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    z-index: 1;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    margin: 0 auto;
+}
+
+.ticket-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.ticket-content::before,
+.ticket-content::after {
+    content: "❧";
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(0, 168, 168, 0.6);
+}
+
+.ticket-content::before {
+    top: -12px;
+    left: -12px;
+    transform: rotate(-15deg);
+    z-index: 2;
+}
+
+.ticket-content::after {
+    bottom: -12px;
+    right: -12px;
+    transform: rotate(15deg);
+}
+
+.ticket-image-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.ticket {
+    width: 100%;
+    max-width: 400px;
+    background: linear-gradient(45deg, #eafffe, #f8ffff);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border: 2px solid #00a8a8;
+    transform: perspective(800px) rotateY(5deg);
+    transition: transform 0.6s ease;
+    position: relative;
+}
+
+.ticket:hover {
+    transform: perspective(800px) rotateY(-5deg) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-header {
+    background: linear-gradient(to right, #006666, #00a8a8);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.ticket-event {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+}
+
+.ticket-body {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-info {
+    text-align: left;
+}
+
+.ticket-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #006666;
+}
+
+.ticket-date, .ticket-time {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.ticket-reserved {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 15px;
+    color: #d10069;
+    text-transform: uppercase;
+    border: 2px dashed #d10069;
+    padding: 5px 10px;
+    display: inline-block;
+    transform: rotate(-5deg);
+}
+
+.ticket-qr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-qr-placeholder {
+    width: 80px;
+    height: 80px;
+    background-image: linear-gradient(45deg, #00a8a8 25%, transparent 25%), 
+                      linear-gradient(-45deg, #00a8a8 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #00a8a8 75%), 
+                      linear-gradient(-45deg, transparent 75%, #00a8a8 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.ticket-qr-placeholder::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.ticket-footer {
+    background-color: #f1ffff;
+    border-top: 1px dashed #00a8a8;
+    padding: 10px;
+    font-style: italic;
+    color: #006666;
+}
+
+.ticket-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #333;
+    margin-top: 30px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Efecto de línea perforada */
+.ticket::before {
+    content: "";
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, #00a8a8, #00a8a8 6px, transparent 6px, transparent 12px);
+    z-index: 2;
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+    .ticket-title {
+        font-size: 3.5rem;
+    }
+    
+    .ticket-content {
+        padding: 40px 30px;
+    }
+    
+    .ticket {
+        max-width: 320px;
+    }
+    
+    .ticket-message {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ticket-title {
+        font-size: 2.8rem;
+    }
+    
+    .ticket-content {
+        padding: 30px 20px;
+    }
+    
+    .ticket {
+        max-width: 280px;
+    }
+    
+    .ticket-body {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .ticket-info {
+        text-align: center;
+    }
+    
+    .ticket-message {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>XV Años de Jenny</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            section:nth-child(odd) {
+                background-color: #fce4ec; /* Rosa muy claro */
+            }
+
+            section:nth-child(even) {
+                background-color: #f8bbd0; /* Rosa más fuerte */
+            }
+
+            h1 {
+                font-family: 'Great Vibes', cursive;
+                font-size: 5em;
+                color: #ff69b4;
+                margin: 20px auto;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+                font-family: 'Great Vibes', cursive;
+                font-size: 4em;
+                color: #ff69b4;
+                margin: 20px auto;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .date {
+                font-size: 1.5em;
+                color: #666;
+                margin: 30px auto;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 15px;
+                border-radius: 10px;
+                max-width: 500px;
+            }
+
+            .responsive-image {
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+                margin: 20px auto;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                display: block;
+            }
+
+            .decoration-line {
+                width: 80%;
+                max-width: 500px;
+                height: 1px;
+                background: #d4a5a5;
+                margin: 2rem auto;
+                position: relative;
+            }
+
+            .decoration-line::before {
+                content: '🎂';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #fce4ec;
+                padding: 0 1rem;
+                font-size: 1.5rem;
+            }
+
+            .quince-container {
+                background-color: rgba(253, 244, 248, 0.9);
+                padding: 30px 20px;
+                margin: 20px auto;
+                max-width: 600px;
+                border-radius: 15px;
+            }
+
+            .date-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                flex-wrap: wrap;
+                margin: 20px auto;
+            }
+
+            .date-text {
+                color: #888;
+                font-size: 28px;
+                font-weight: 300;
+            }
+
+            .separator {
+                width: 2px;
+                height: 40px;
+                background-color: #d4838f;
+            }
+
+            .countdown-container {
+                background: rgba(248, 187, 208, 0.9);
+                padding: 2rem;
+                border-radius: 10px;
+                margin: 2rem auto;
+                max-width: 600px;
+            }
+
+            .countdown-title {
+                color: white;
+                font-style: italic;
+                margin-bottom: 1.5rem;
+            }
+
+            .countdown-boxes {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .countdown-box {
+                background: white;
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: #d4a5a5;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+            }
+
+            .music-player {
+                background: rgba(255, 105, 180, 0.9);
+                padding: 15px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                justify-content: center;
+                margin: 20px auto;
+                max-width: 400px;
+                backdrop-filter: blur(5px);
+            }
+
+            .play-pause-btn {
+                background: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease;
+            }
+
+            .play-pause-btn:hover {
+                transform: scale(1.1);
+            }
+
+            .song-info {
+                color: white;
+                font-size: 14px;
+                max-width: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .volume-control {
+                width: 80px;
+            }
+
+            .volume-control input[type="range"] {
+                width: 100%;
+                height: 4px;
+                background: white;
+                border-radius: 2px;
+                -webkit-appearance: none;
+            }
+
+            .volume-control input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 12px;
+                height: 12px;
+                background: white;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            @media (max-width: 600px) {
+                body {
+                    padding: 20px 10px;
+                }
+
+                h1 {
+                    font-size: 3em;
+                }
+
+                h2 {
+                    font-size: 2.5em;
+                }
+
+                .date {
+                    font-size: 1.2em;
+                }
+
+                .countdown-box {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .date-container {
+                    gap: 10px;
+                }
+
+                .date-text {
+                    font-size: 24px;
+                }
+
+                .separator {
+                    height: 30px;
+                }
+
+                .music-player {
+                    flex-direction: column;
+                    padding: 10px;
+                }
+
+                .volume-control {
+                    width: 100%;
+                }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .playing .play-pause-btn {
+                animation: pulse 2s infinite;
+            }
+            .locations-container {
+                padding: 40px 20px;
+                text-align: center;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .section-title {
+                color: #888;
+                font-size: 24px;
+                margin-bottom: 40px;
+                font-style: italic;
+            }
+
+            .cards-container {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
+
+            .location-card {
+                background: white;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
+
+            .card-title {
+                color: #d4838f;
+                font-size: 20px;
+                margin-bottom: 20px;
+                font-style: italic;
+            }
+
+            .card-icon {
+                color: #d4838f;
+                font-size: 40px;
+                margin: 20px 0;
+            }
+
+            .event-date {
+                color: #666;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 15px 0;
+            }
+
+            .location-name {
+                color: #444;
+                font-size: 16px;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+
+            .location-address {
+                color: #666;
+                font-size: 14px;
+                line-height: 1.4;
+                margin: 10px 0 20px;
+            }
+
+            .gps-button {
+                background-color: #d4838f;
+                color: white;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-size: 12px;
+                letter-spacing: 1px;
+                transition: background-color 0.3s;
+            }
+
+            .gps-button:hover {
+                background-color: #c27582;
+            }
+
+            /* Iconos simulados con caracteres especiales */
+            .icon-church::before {
+                content: "⛪";
+                font-size: 40px;
+                display: block;
+                margin: 10px 0;
+            }
+
+            .icon-glasses::before {
+                content: "🥂";
+                font-size: 40px;
+                display: block;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="header-section">
+            <h1>¡Mis xv!</h1>
+            <h2>Jennyfer</h2>
+            <img src="imagen1.jpg" alt="Imagen de Jenny" class="responsive-image">
+
+            <div class="music-player">
+                <button class="play-pause-btn" id="playPauseBtn">▶️</button>
+                <div class="song-info">
+                    <span id="songTitle">Canción de XV Años</span>
+                </div>
+                <div class="volume-control">
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+                </div>
+                <audio id="background-music" preload="auto" loop autoplay playsinline muted>
+                    <source src="XV.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </section>
+
+        <section class="invitation-section">
+            <p class="date">Te invita a celebrar sus XV años</p>
+            <div class="decoration-line"></div>
+
+            <div class="quince-container">
+                <div class="quince-title">Los XV serán el próximo:</div>
+                <div class="date-container">
+                    <div class="date-text">26</div>
+                    <div class="separator"></div>
+                    <div class="date-text">Abril</div>
+                    <div class="separator"></div>
+                    <div class="date-text">2025</div>
+                </div>
+            </div>
+        </section>
+        <section class="invitation-section">
+            <div class="locations-container">
+                <div class="section-title">Ubicaciones</div>
+                <div class="cards-container">
+                    <!-- Tarjeta Ceremonia Religiosa -->
+                    <div class="location-card">
+                        <div class="card-title">Ceremonia Religiosa</div>
+                        <div class="icon-church"></div>
+                        <div class="event-date">SABADO 26 DE ABRIL<br>17:00 HRS</div>
+                        <div class="location-name">Parroquia de San Antonio de Padua</div>
+                        <div class="location-address">Principal 1, Centro,<br>
+                            54900 Tultitlán de Mariano Escobedo,<br>
+                            Estado de México
+                        </div>
+                        <button class="gps-button">Ver en GPS</button>
+                    </div>
+
+                    <!-- Tarjeta Recepción -->
+                    <div class="location-card">
+                        <div class="card-title">Recepción</div>
+                        <div class="icon-glasses"></div>
+                        <div class="event-date">Sabado 26 DE ABRIL<br>18:15 HRS</div>
+                        <div class="location-name">Salon Tucan</div>
+                        <div class="location-address">Manuel José Othón 18, Nativitas, <br>
+                            54900 Tultitlán de Mariano Escobedo<br>
+                            Estado de México</div>
+                        <button class="gps-button">Ver en GPS</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="countdown-section">
+            <div class="countdown-container">
+                <p class="countdown-title">Solo faltan:</p>
+                <div class="countdown-boxes">
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <script>
+            function updateCountdown() {
+                const targetDate = new Date('April 26, 2025 17:00:00').getTime();
+
+                function update() {
+                    const now = new Date().getTime();
+                    const difference = targetDate - now;
+
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                    document.getElementById('days').textContent = String(days).padStart(2, '0');
+                    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                }
+
+                update();
+                setInterval(update, 1000);
+            }
+
+            updateCountdown();
+
+            const audio = document.getElementById('background-music');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const musicPlayer = document.querySelector('.music-player');
+            let isFirstInteraction = true;
+
+            audio.volume = 0.5;
+            audio.muted = false;
+
+            function forcePlay() {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise
+                            .then(() => {
+                                musicPlayer.classList.add('playing');
+                                updatePlayPauseButton();
+                            })
+                            .catch(() => {
+                                console.log('Esperando interacción del usuario para iniciar la música');
+                            });
+                }
+            }
+
+            window.onload = forcePlay;
+
+            document.body.addEventListener('click', () => {
+                if (isFirstInteraction) {
+                    forcePlay();
+                    isFirstInteraction = false;
+                }
+            });
+
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    musicPlayer.classList.add('playing');
+                } else {
+                    audio.pause();
+                    musicPlayer.classList.remove('playing');
+                }
+                updatePlayPauseButton();
+            });
+
+            function updatePlayPauseButton() {
+                playPauseBtn.textContent = audio.paused ? '▶️' : '⏸️';
+            }
+
+            volumeSlider.addEventListener('input', (e) => {
+                audio.volume = e.target.value;
+            });
+
+            audio.addEventListener('play', () => {
+                musicPlayer.classList.add('playing');
+                updatePlayPauseButton();
+            });
+
+            audio.addEventListener('pause', () => {
+                musicPlayer.classList.remove('playing');
+                updatePlayPauseButton();
+            });
+        </script>
+    </body>
+</html>
